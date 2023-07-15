@@ -1,0 +1,105 @@
+{
+    "name": "top",
+    "position": "top",
+    "height": 20,
+    "modules-left": ["sway/workspaces", "sway/mode", "tray"],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/gamemode", "pulseaudio", "cpu", "memory", "temperature#cpu"],
+   "custom/gamemode": {
+        "exec-if": "gamemoded --status | grep 'is active' -q",
+        "interval": 2,
+        "exec": "echo '\n Gamemode is active'"
+    },
+   "clock": {
+        "format": "{: %I:%M %p   %d/%m}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
+    },
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": true
+    },
+    "memory": {
+        "format": "  {}%"
+    },
+    "custom/gpu": {
+        "exec": "bat /sys/class/drm/card0/device/gpu_busy_percent",
+        "interval": 2,
+        "format": "力 {}% "
+    },
+    "temperature#cpu": {
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "temperature#gpu": {
+        "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+        "format": "{icon}{temperatureC}°C ",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "  0%",
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "portable": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/preferredplayer": {
+        "exec": "jq -c -n --arg tooltip \"Current: $(preferredplayer || echo No player set)\" --arg text \"$(preferredplayer || echo No player set)\" '{text: $text, alt: $text, tooltip: $tooltip}'",
+        "on-click": "player=$(mpris-ctl list | alacritty-fzf) && preferredplayer $player && pkill -SIGRTMIN+8 waybar",
+        "on-click-right": "preferredplayer none && pkill -SIGRTMIN+8 waybar",
+        "tooltip": true,
+        "return-type": "json",
+        "interval": 2,
+        "signal": 8,
+        "format": "{icon}",
+        "format-icons": {
+            "Celluloid": "",
+            "Spotify": "阮",
+            "qutebrowser": "爵",
+            "discord": "ﭮ",
+            "No player set": "ﱘ"
+        }
+    },
+    "custom/player": {
+        "exec-if": "[[ \"$(player=$(preferredplayer) && mpris-ctl --player $player status)\" != \"Stopped\" ]]",
+        "exec": "player=$(preferredplayer) && mpris-ctl --player $player info '{\"text\": \"%artist_name - %track_name\",\"alt\": \"%play_status\", \"tooltip\": \"%track_name (%artist_name - %album_name)\"}'",
+        "max-length": 35,
+        "return-type": "json",
+        "interval": 2,
+        "signal": 8,
+        "on-click": "player=$(preferredplayer) && mpris-ctl --player $player pp; pkill -SIGRTMIN+8 waybar",
+        "on-scroll-up": "player=$(preferredplayer) && mpris-ctl --player $player previous; pkill -SIGRTMIN+8 waybar",
+        "on-scroll-down": "player=$(preferredplayer) && mpris-ctl --player $player next; pkill -SIGRTMIN+8 waybar",
+        "format": "{icon}  {}",
+        "format-icons": {
+            "Playing": "契",
+            "Paused": "",
+            "Stopped": "栗"
+        }
+    },
+    "sway/window": {
+        "max-length": 50
+    },
+   "sway/workspaces":{
+      "format": "{icon}",
+      "format-icons": {
+         "1": "一",
+         "2": "二",
+         "3": "三",
+         "4": "四",
+         "5": "五",
+         "6": "六",
+         "7": "七",
+         "8": "八",
+         "9": "九",
+         "10": "十",
+      }
+   },
+   "tray":{
+      "spacing": 10,
+   }
+}
