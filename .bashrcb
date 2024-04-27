@@ -1,5 +1,4 @@
 # .bashrc
-fish
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -27,5 +26,4 @@ fi
 
 unset rc
 
-eval "$(starship init bash)"
-
+fish
