@@ -1,0 +1,65 @@
+{
+    "name": "top",
+    "position": "top",
+    "height": 26,
+
+    "modules-left": ["sway/workspaces", "sway/mode", "tray"],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/gamemode", "pulseaudio", "cpu", "memory", "temperature#cpu"],
+
+    "sway/workspaces":{
+        "format": "{icon}",
+        "format-icons": {
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "6": "六",
+            "7": "七",
+            "8": "八",
+            "9": "九",
+            "10": "十"
+        }
+    },
+    "tray":{
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%I:%M %p   %d/%m}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
+    },
+   "custom/gamemode": {
+        "exec-if": "gamemoded --status | grep 'is active' -q",
+        "interval": 2,
+        "exec": "echo '\n Gamemode is active'"
+    },
+    "pulseaudio": {
+        "scroll-step": 1,
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-bluetooth-muted": " {icon}",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "󰋎 ",
+            "headset": "󰋎 ",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": true
+    },
+    "temperature#cpu": {
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "memory": {
+        "format": " {}%"
+    }
+}
