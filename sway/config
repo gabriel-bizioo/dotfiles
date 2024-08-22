@@ -1,122 +1,99 @@
 #
 # Appearance
 #
-exec /usr/bin/pipewire
-exec /usr/bin/pipewire-pulse
-exec /usr/bin/wireplumber
 
-exec gammastep -O 5500
+    exec gammastep -O 5500
+
 # Start flavours
-## Base16 TokyoNight
+# Base16 TokyoNight
 # Author: enkia
-
-set $base00 #1a1b26
-set $base01 #565f89
-set $base02 #cfc9c2
-set $base03 #9aa5ce
-set $base04 #a9b1d6
-set $base05 #c0caf5
-set $base06 #bb9af7
-set $base07 #7aa2f7
-set $base08 #7dcfff
-set $base09 #2ac3de
-set $base0A #b4f9f8
-set $base0B #73daca
-set $base0C #9ece6a
-set $base0D #e0af68
-set $base0E #ff9e64
-set $base0F #f7768e
+    set $base00 #1a1b26
+    set $base01 #565f89
+    set $base02 #cfc9c2
+    set $base03 #9aa5ce
+    set $base04 #a9b1d6
+    set $base05 #c0caf5
+    set $base06 #bb9af7
+    set $base07 #7aa2f7
+    set $base08 #7dcfff
+    set $base09 #2ac3de
+    set $base0A #b4f9f8
+    set $base0B #73daca
+    set $base0C #9ece6a
+    set $base0D #e0af68
+    set $base0E #ff9e64
+    set $base0F #f7768e
 # End flavours
 
-exec mpvpaper '*' -o "--loop-file" $HOME/Videos/wallpapers/the-legend-of-zelda-majoras-mask-pixel-moewalls-com.mp4
-#exec swaybg -o '*' -i $HOME/Pictures/wallpapers/vladstudio_neptune_and_triton_3840x2160.jpg
+    exec mpvpaper '*' -o "--loop-file" $HOME/Videos/wallpapers/the-legend-of-zelda-majoras-mask-pixel-moewalls-com.mp4
+    #exec swaybg -o '*' -i $HOME/Pictures/wallpapers/vladstudio_neptune_and_triton_3840x2160.jpg
 
-#Disabling titlebar:
-font pango:monospace 1
+    # Hack for disabling the titlebar:
+    font pango:monospace 1
 
-default_border pixel 1
-default_floating_border pixel 2
+    default_border pixel 1
+    default_floating_border pixel 2
 
-client.focused #333333 #6d91de #6d91de #6d91de #6d91de
-client.focused_inactive #333333 #333333 #333333 #333333 #333333
+    client.focused #333333 #6d91de #6d91de #6d91de #6d91de
+    client.focused_inactive #333333 #333333 #333333 #333333 #333333
 
-set $gnome-schema org.gnome.desktop.interface 
-exec_always {
-     gsettings set $gnome-schema gtk-theme 'vimix-dark-doder'
-     gsettings set $gnome-schema icon-theme 'Papirus-Light'
-     gsettings set $gnome-schema cursor-theme 'capitaine-cursors'
-     gsettings set $gnome-schema font-name 'JetBrainsMono Nerd Font'
-}
+    #set $gnome-schema org.gnome.desktop.interface 
+    #exec_always {
+    #     gsettings set $gnome-schema gtk-theme 'vimix-dark-doder'
+    #     gsettings set $gnome-schema icon-theme 'Papirus-Light'
+    #     gsettings set $gnome-schema cursor-theme 'capitaine-cursors'
+    #}
 
 ### Variables
-#
-# Logo key. Use Mod1 for Alt.
-set $mod Mod4
-set $alt Mod1
-# Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
-# Your preferred terminal emulator
-set $term kitty -e fish
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu dmenu_path | rofi -show drun | xargs swaymsg exec --
 
-bindsym $alt+Tab exec rofi -show window
+# Logo key. Use Mod1 for Alt.
+    set $mod Mod4
+    set $alt Mod1
+
+    # Home row direction keys, like vim
+    set $left h
+    set $down j
+    set $up k
+    set $right l
+
+    # Your preferred terminal emulator
+    set $term kitty -e fish
+
+    # Your preferred application launcher
+    # Note: pass the final command to swaymsg so that the resulting window can be opened
+    # on the original workspace that the command was run on.
+    set $menu dmenu_path | rofi -show drun | xargs swaymsg exec --
+
+    bindsym $alt+Tab exec rofi -show window
 
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-#This works well
-#output DP-2 resolution 1920x1080@143.855hz position 2400,270
-#output DP-3 resolution 3840x2160 scale 1.6 position 0,0
+    # TV configuration
+    output HDMI-A-1 resolution 3840x2160 position 0,0
 
-#Closely acurate monitor scaling settings:
-output DP-2 resolution 1920x1080@143.855hz position 2194,154
-output DP-3 resolution 3840x2160 scale 1.75 position 0,0
+    # Closely acurate monitor scaling settings:
+    output DP-1 resolution 1920x1080@143.855hz position 2194,154
+    output DP-2 resolution 3840x2160 scale 1.75 position 0,0
 
 ### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#         timeout 300 'swaylock -f -c 000000' \
-#         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+
+    # This will lock your screen after 300 seconds of inactivity, then turn off
+    # your displays after another 300 seconds, and turn your screens back on when
+    # resumed. It will also lock your screen before your computer goes to sleep.
+    exec swayidle -w \
+        timeout 600 'swaylock -f -c 000000' \
+        timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+        before-sleep 'swaylock -f -c 000000'
 
 ### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-   input * {
-      xkb_layout "br"
-      xkb_model "abnt2"
-      xkb_variant "nodeadkeys"
-   }
+    input * {
+        xkb_layout "br"
+        xkb_model "abnt2"
+    }
 
 ### Key bindings
 #
@@ -152,7 +129,8 @@ output DP-3 resolution 3840x2160 scale 1.75 position 0,0
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
+
+    # Ditto, with arrow keys
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
     bindsym $mod+Up focus up
@@ -163,12 +141,14 @@ output DP-3 resolution 3840x2160 scale 1.75 position 0,0
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
+
     # Ditto, with arrow keys
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
 
+    # Cycle through workspaces with PgUp and PgDown
     bindsym $mod+Prior workspace next
     bindsym $mod+Next workspace prev
 
@@ -186,6 +166,7 @@ output DP-3 resolution 3840x2160 scale 1.75 position 0,0
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
+
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
@@ -199,7 +180,8 @@ output DP-3 resolution 3840x2160 scale 1.75 position 0,0
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-#print screen keyboard button name
+
+#
 # Layout stuff:
 #
     # You can "split" the current object of your focus with
@@ -208,14 +190,14 @@ output DP-3 resolution 3840x2160 scale 1.75 position 0,0
     bindsym $mod+b splith
     bindsym $mod+v splitv
 
-    # Switch the current container between different layout styles stacking mode is interesting but not being used by me alot
+    #Toggle vertical/horizontal split
+    bindsym $mod+e layout toggle split
+
+    # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
-    
+
     # Every screenlocker fucking sucks! This one is ugly as hell but at least it works
     bindsym $mod+w exec swaylock
-
-    # Very useful:
-    bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -232,10 +214,6 @@ output DP-3 resolution 3840x2160 scale 1.75 position 0,0
 #
 # Scratchpad:
 #
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later, by pressing "$mod+Shift+space"
-    # (scratchpad windows are floating windows)
-    
     # Move the currently focused window to the scratchpad
     bindsym $mod+Shift+minus move scratchpad
 
@@ -246,65 +224,70 @@ output DP-3 resolution 3840x2160 scale 1.75 position 0,0
 #
 # Volume:
 #
-   bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-   bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-   bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 #
 # Media Control:
 #
-   bindsym XF86AudioPrev exec playerctl previous
-   bindsym XF86AudioPlay exec playerctl play-pause
-   bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioNext exec playerctl next
+
 #
 # Screenshots:
 #
-   #Screenshot everything:
-   bindsym Print exec grim $HOME/Pictures/screenshots/$(date '+%d-%m-%y_%H:%M:%S').png
+    # Screenshot all active workspaces
+    bindsym Print exec grim $HOME/Pictures/screenshots/$(date '+%dd%mm%yy_%Hh%Mm%Ss').png
 
-   #Screenshot monitor:
-   bindsym $mod+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $HOME/Pictures/screenshots/$(date '+%d-%m-%y_%H:%M:%S').png
+    # Screenshot workspace
+    bindsym $mod+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $HOME/Pictures/screenshots/$(date '+%dd%mm%yy_%Hh%Mm%Ss').png
 
-   #Snipping:
-   bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
+    # Snipping.
+    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
+
+    # Snipping and saving the content in a file (I have to find a better keybind for this command and add check for when selection is cancelled)
+    bindsym $mod+Shift+z exec grim -g "$(slurp)" - | wl-copy | wl-paste > $HOME/Pictures/snips/snip_$(date '+%dd%mm%yy_%Hh%Mm%Ss').png
 
 #
 # Resizing containers:
 #
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 20px
-    bindsym $down resize grow height 20px
-    bindsym $up resize shrink height 20px
-    bindsym $right resize grow width 20px
+    mode "resize" {
+        # left will shrink the containers width
+        # right will grow the containers width
+        # up will shrink the containers height
+        # down will grow the containers height
+        bindsym $left resize shrink width 20px
+        bindsym $down resize grow height 20px
+        bindsym $up resize shrink height 20px
+        bindsym $right resize grow width 20px
 
-    # Ditto, with arrow keys, and smaller steps
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+        # Ditto, with arrow keys, and smaller steps
+        bindsym Left resize shrink width 10px
+        bindsym Down resize grow height 10px
+        bindsym Up resize shrink height 10px
+        bindsym Right resize grow width 10px
 
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
+        # Return to default mode
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
+    bindsym $mod+r mode "resize"
 
 #
 # Status Bar:
 #
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-   swaybar_command waybar
-}
+    # Read 'man 5 sway-bar' for more information about this section.
+    bar {
+        swaybar_command waybar
+    }
 
-workspace number 3
-exec xdman
+    # Small hack for initializing eXtreme Download Manager on another workspace
+    workspace number 10
+    exec xdman
+    workspace number 1
 
-workspace number 1
-exec autotiling
+    exec autotiling
 
-include /etc/sway/config.d/*
+    include /etc/sway/config.d/*
