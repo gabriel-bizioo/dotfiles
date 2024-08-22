@@ -10,6 +10,7 @@ set fish_user_keybindings
 set C3SL 'gpb21@ssh.c3sl.ufpr.br'
 set EDITOR 'nvim'
 
+alias icat='kitten icat'
 alias neofetch=fastfetch
 alias ls=lsd
 alias ll='lsd -alh'
