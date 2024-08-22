@@ -17,8 +17,8 @@ threshold = 30
 style = "bold red"
 
 [character]
-success_symbol = "[➜](bold green) "
-error_symbol = "[✖](bold red) "
+success_symbol = "[](bold green) "
+error_symbol = "[](bold red) "
 
 [cmd_duration]
 min_time = 10_000  # Show command duration over 10,000 milliseconds (=10 sec)
@@ -68,4 +68,3 @@ show_always = false
 
 [nodejs]
 format = "via [🤖 $version](bold green) "
-
