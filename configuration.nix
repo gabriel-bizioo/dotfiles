@@ -55,7 +55,7 @@
   # Configure keymap in X11
       xserver.xkb = {
           layout = "br";
-          variant = "nodeadkeys";
+          variant = "thinkpad60";
       };
 
       pipewire = {
@@ -84,7 +84,7 @@
   };
 
   # Configure console keymap
-  console.keyMap = "br-abnt2";
+  console.keyMap = "br";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.bizio = {
