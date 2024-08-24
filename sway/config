@@ -1,4 +1,9 @@
 #
+# Pipewire startup:
+#
+    exec (pipewire & wireplumber & pipewire-pulse)
+
+#
 # Appearance
 #
 
@@ -120,7 +125,7 @@
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+x exec ~/.local/bin/logout
 #
 # Moving around:
 #
@@ -273,6 +278,7 @@
         bindsym Return mode "default"
         bindsym Escape mode "default"
     }
+
     bindsym $mod+r mode "resize"
 
 #
@@ -282,6 +288,9 @@
     bar {
         swaybar_command waybar
     }
+#
+# Programs to run on startup:
+#
 
     # Small hack for initializing eXtreme Download Manager on another workspace
     workspace number 10
