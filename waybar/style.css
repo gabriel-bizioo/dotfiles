@@ -28,8 +28,8 @@ tooltip{
 
 #workspaces button {
   color: @base01;
-  padding-right: 22px;
-  padding-left: 22px;
+  padding-right: 32px;
+  padding-left: 32px;
 }
 
 #workspaces button.focused {
