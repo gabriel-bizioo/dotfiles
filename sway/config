@@ -1,9 +1,4 @@
 #
-# Pipewire startup:
-#
-    exec (pipewire & wireplumber & pipewire-pulse)
-
-#
 # Appearance
 #
 
@@ -229,8 +224,8 @@
 #
 # Volume:
 #
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% & wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]*//g" > /tmp/wobpipe
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% & wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]*//g" > /tmp/wobpipe
     bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 #
@@ -298,5 +293,6 @@
     workspace number 1
 
     exec autotiling
+    exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]*//g" > /tmp/wobpipe & tail -f /tmp/wobpipe | wob)
 
     include /etc/sway/config.d/*
