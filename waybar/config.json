@@ -38,7 +38,7 @@
         "scroll-step": 1,
         "format": "{icon}  {volume}%",
         "format-bluetooth": "{icon} {volume}%",
-        "format-bluetooth-muted": " {icon}",
+        "format-bluetooth-muted": "{icon} ",
         "format-icons": {
             "headphone": "",
             "hands-free": "󰋎 ",
@@ -52,7 +52,8 @@
     },
     "cpu": {
         "format": " {usage}%",
-        "tooltip": true
+        "tooltip": true,
+        "on-click": "kitty htop"
     },
     "temperature#cpu": {
         "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
