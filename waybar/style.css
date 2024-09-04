@@ -13,7 +13,7 @@ window#waybar {
   background: @base00;
 }
 
-tooltip{
+tooltip {
    color: @base04;
    padding: 10px;
    border: 5px;
