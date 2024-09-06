@@ -9,6 +9,7 @@ set fish_greeting
 set fish_user_keybindings
 set C3SL 'gpb21@ssh.c3sl.ufpr.br'
 set EDITOR 'nvim'
+set ufpr $HOME'/Documents/ufpr/'
 
 alias icat='kitten icat'
 alias neofetch=fastfetch
