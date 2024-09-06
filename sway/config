@@ -25,8 +25,7 @@
     set $base0F #f7768e
 # End flavours
 
-    #exec mpvpaper '*' -o "no-audio --loop-file" $HOME/Videos/wallpapers/the-legend-of-zelda-majoras-mask-pixel-moewalls-com.mp4
-    exec swaybg -o '*' -i $HOME/Pictures/wallpapers/night_city.png
+    exec swaybg -o '*' -i $HOME/.config/sway/background.png
 
     # Hack for disabling the titlebar:
     font pango:monospace 1
