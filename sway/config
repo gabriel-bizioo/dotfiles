@@ -31,7 +31,7 @@
     font pango:monospace 1
 
     default_border pixel 1
-    default_floating_border pixel 2
+    default_floating_border pixel 1
 
     client.focused #333333 #6d91de #6d91de #6d91de #6d91de
     client.focused_inactive #333333 #333333 #333333 #333333 #333333
