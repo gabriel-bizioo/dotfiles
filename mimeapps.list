@@ -12,6 +12,8 @@ x-scheme-handler/discord-460807638964371468=discord-460807638964371468.desktop
 x-scheme-handler/fcade=fcade-quark.desktop
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/fdm=freedownloadmanager_fdm_up.desktop
+x-scheme-handler/figma=figma-linux.desktop
 [Added Associations]
 application/x-extension-htm=firefox.desktop;
 application/x-extension-html=firefox.desktop;
