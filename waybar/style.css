@@ -14,23 +14,25 @@ window#waybar {
 }
 
 tooltip {
-   color: @base04;
+   background-color: @base00;
    padding: 10px;
    border: 5px;
-   border-radius: 5px;
 }
 
-/*modules left*/
+tooltip label {
+    color: @base04;
+}
 
+/* modules left */
 #workspaces {
    background: @base00;
-   padding-right: 5px;
+   padding-right: 15px;
 }
 
 #workspaces button {
   color: @base01;
-  padding-right: 32px;
-  padding-left: 32px;
+  padding-right: 28px;
+  padding-left: 28px;
 }
 
 #workspaces button.focused {
@@ -38,31 +40,41 @@ tooltip {
   color: @base00;
 }
 
-#workspaces button.active {
-   background: @base0F;
-   color: @base00;
-}
-
 #workspaces button:hover {
   background: @base07;
+  color: @base00;
 }
 
-#tray {
-   padding: 0px 10px 0px 10px;
+#tray, #mode {
+   padding-right: 15px;
    transition: smooth;
 }
 
-/* modules center*/
-
+/* modules center */
 #clock {
   color: @base04;
   padding: 0px 5px;
   margin: 5px 0px 5px 5px;
 }
 
-/* modules right*/
-
-#cpu, #memory, #temperature, #network, #pulseaudio{
+/* modules right */
+#cpu, #memory, #temperature, #network, #pulseaudio, #gamemode {
    color: @base04;
-   margin: 0px 15px 0px 0px;
+   padding: 0px 0px 0px 15px;
 }
+
+#network, #gamemode {
+    padding-right: 5px;
+}
+
+#temperature.critical {
+    color: @base0F;
+}
+
+/* last module on the right */
+#temperature {
+   color: @base04;
+   padding-left: 15px;
+   padding-right: 10px;
+}
+

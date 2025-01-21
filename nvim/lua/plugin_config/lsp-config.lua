@@ -1,4 +1,4 @@
-local servers = { 'clangd', 'rust_analyzer', 'lua_ls' }
+local servers = { 'clangd', 'rust_analyzer', 'lua_ls', 'jdtls', 'asm_lsp' }
 
 require("mason").setup()
 require("mason-lspconfig").setup({

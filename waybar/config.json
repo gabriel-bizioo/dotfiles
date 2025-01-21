@@ -3,11 +3,11 @@
     "position": "top",
     "height": 26,
 
-    "modules-left": ["sway/workspaces", "sway/mode", "tray"],
+    "modules-left": ["sway/workspaces", "tray", "sway/mode"],
     "modules-center": ["clock"],
-    "modules-right": ["custom/gamemode", "pulseaudio", "cpu", "memory", "temperature#cpu"],
+    "modules-right": ["gamemode", "network", "pulseaudio", "cpu", "memory", "temperature#cpu", "battery"],
 
-    "sway/workspaces":{
+    "sway/workspaces": {
         "format": "{icon}",
         "format-icons": {
             "1": "一",
@@ -22,17 +22,25 @@
             "10": "十"
         }
     },
-    "tray":{
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>",
+    },
+    "tray": {
         "spacing": 10
     },
+
+
     "clock": {
         "format": "{:%I:%M %p   %d/%m}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
     },
-   "custom/gamemode": {
-        "exec-if": "gamemoded --status | grep 'is active' -q",
-        "interval": 2,
-        "exec": "echo '\n Gamemode is active'"
+
+
+   "gamemode": {
+       "use-icon": false,
+       "format": "{glyph}",
+       "tooltip": true,
+       "glyph": "󰊗"
     },
     "pulseaudio": {
         "scroll-step": 1,
@@ -50,6 +58,18 @@
         },
         "on-click": "pavucontrol"
     },
+    "network": {
+        "format-wifi": "{icon}",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤭",
+        "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
+        "tooltip-format-wifi": "\"{essid}\" {frequency}Ghz ({signalStrength}%)
+        \n{bandwidthDownBytes}   {bandwidthUpBytes} ",
+        "tooltip-format-ethernet": "{ipaddr}
+        \n{bandwidthDownBytes}   {bandwidthUpBytes} ",
+        "tooltip-format-disconnected": "No internet connection.",
+        "on-click": "connman-gtk"
+    },
     "cpu": {
         "format": " {usage}%",
         "tooltip": true,
@@ -62,5 +82,9 @@
     },
     "memory": {
         "format": " {}%"
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     }
 }
