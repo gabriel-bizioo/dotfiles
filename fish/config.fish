@@ -17,6 +17,6 @@ alias neofetch=fastfetch
 alias ls=lsd
 alias ll='lsd -alh'
 alias cat=bat
-alias lf='du -hd1'
+alias lsz='dua'
 
 starship init fish | source
