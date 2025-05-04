@@ -15,6 +15,9 @@ x-scheme-handler/https=firefox.desktop;
 x-scheme-handler/fdm=freedownloadmanager_fdm_up.desktop
 x-scheme-handler/figma=figma-linux.desktop
 x-scheme-handler/heroic=heroic.desktop
+x-scheme-handler/discord-1139939140494971051=discord-1139939140494971051.desktop
+x-scheme-handler/discord=vesktop.desktop
+x-scheme-handler/msteams=teams.desktop
 [Added Associations]
 application/x-extension-htm=firefox.desktop;
 application/x-extension-html=firefox.desktop;

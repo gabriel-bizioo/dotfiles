@@ -18,5 +18,21 @@ alias ls=lsd
 alias ll='lsd -alh'
 alias cat=bat
 alias lsz='dua'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 starship init fish | source
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /home/bizio/miniconda3/bin/conda
+    eval /home/bizio/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/home/bizio/miniconda3/etc/fish/conf.d/conda.fish"
+        . "/home/bizio/miniconda3/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/home/bizio/miniconda3/bin" $PATH
+    end
+end
+# <<< conda initialize <<<
+

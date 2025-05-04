@@ -85,6 +85,8 @@ o.hlsearch = false
 o.incsearch = true
 o.updatetime = 50
 
+vim.opt.relativenumber = true
+vim.opt.number = true
 
 
 -- Map <leader> to space
