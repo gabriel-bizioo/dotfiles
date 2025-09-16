@@ -31,8 +31,8 @@ tooltip label {
 
 #workspaces button {
   color: @base01;
-  padding-right: 55px;
-  padding-left: 55px;
+  padding-right: 65px;
+  padding-left: 65px;
 }
 
 #workspaces button.focused {

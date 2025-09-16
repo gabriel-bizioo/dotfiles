@@ -1,13 +1,12 @@
 local g = vim.g
 local o = vim.o
 
-vim.cmd[[colorscheme tokyonight-night]]
 
 -- cmd('syntax on')
 -- vim.api.nvim_command('filetype plugin indent on')
 
 o.termguicolors = true
--- o.background = 'dark'
+o.background = 'dark'
 
 -- Do not save when switching buffers
 -- o.hidden = true
@@ -108,7 +107,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>l", vim.lsp.buf.format)
 
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
@@ -116,7 +115,7 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 

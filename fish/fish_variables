@@ -1,5 +1,13 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export GOBIN:/home/bizio/\x2elocal/bin
+SETUVAR --export GOCACHE:/home/bizio/\x2ecache/go\x2dbuild
+SETUVAR --export GOMODCACHE:/home/bizio/\x2ecache/go/pkg/mod
+SETUVAR --export --path GOPATH:/home/bizio/\x2elocal/share/go
+SETUVAR --export HSA_OVERRIDE_GFX_VERSION:10\x2e3\x2e0
+SETUVAR --export --path PATH:/home/bizio/\x2ebin\x1e/home/bizio/\x2elocal/bin\x1e/home/bizio/\x2ecargo/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/usr/lib/jvm/default/bin\x1e/opt/rocm/bin\x1e/opt/rocm/hip/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/usr/lib/rustup/bin\x1e/usr/local/bin\x1e/usr/local/sbin\x1e/opt/rocm/bin
+SETUVAR --export --path ROCM_PATH:/opt/rocm
+SETUVAR --export XDG_CACHE_HOME:/home/bizio/\x2ecache
 SETUVAR __fish_initialized:3800
 SETUVAR fish_color_autosuggestion:585858
 SETUVAR fish_color_cancel:\x2d\x2dreverse
@@ -40,4 +48,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/usr/local/bin\x1e/usr/bin\x1e/usr/local/sbin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/usr/lib/jvm/default/bin\x1e/usr/lib/rustup/bin\x1e/home/bizio/\x2ebin\x1e/home/bizio/\x2elocal/bin\x1e/home/bizio/\x2ecargo/bin/
+SETUVAR fish_user_paths:/home/bizio/\x2ebin\x1e/home/bizio/\x2elocal/bin\x1e/home/bizio/\x2ecargo/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/usr/lib/jvm/default/bin\x1e/opt/rocm/bin\x1e/opt/rocm/hip/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/usr/lib/rustup/bin\x1e/root/\x2ebin\x1e/root/\x2elocal/bin\x1e/root/\x2ecargo/bin/
