@@ -9,6 +9,7 @@ text/html=firefox.desktop;
 x-scheme-handler/chrome=firefox.desktop;
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
+text/x-log=libreoffice-writer.desktop;
 
 [Default Applications]
 application/x-extension-htm=firefox.desktop;

@@ -51,7 +51,6 @@ o.smartcase = true
 o.backup = false
 o.writebackup = false
 o.undofile = true
-o.undodir = os.getenv("HOME") .. "/.vim/undodir"
 o.swapfile = false
 -- o.backupdir = '/tmp/'
 -- o.directory = '/tmp/'

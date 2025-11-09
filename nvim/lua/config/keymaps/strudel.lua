@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 local strudel = require("strudel")
 
-map("n", "<leader>sl", strudel.quit, { desc = "Launch Strudel" })
+map("n", "<leader>sl", strudel.launch, { desc = "Launch Strudel" })
 map("n", "<leader>sq", strudel.quit, { desc = "Quit Strudel" })
 map("n", "<leader>st", strudel.toggle, { desc = "Strudel Toggle Play/Stop" })
 map("n", "<leader>su", strudel.update, { desc = "Strudel Update" })

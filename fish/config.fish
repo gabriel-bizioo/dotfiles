@@ -13,6 +13,7 @@ set fish_greeting
 set EDITOR 'nvim'
 set ufpr $HOME'/Documents/ufpr/'
 
+alias rmdir=trash
 alias icat='kitten icat'
 alias neofetch=fastfetch
 alias ls=lsd
@@ -22,7 +23,7 @@ alias cat=bat
 alias lsz='dua'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+bind --mode normal tab 'complete'
 
 starship init fish | source
 zoxide init fish | source
-

@@ -25,13 +25,13 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
     set $base0F #f7768e
 # End flavours
 
-    exec swaybg -o '*' -i $HOME/.config/sway/background.png
-
+    #exec swaybg -o '*' -i $HOME/.config/sway/background.png
+    exec mpvpaper '*' -o "--loop-file" $HOME/Videos/wallpapers/coding-deck-moewalls-com.mp4
     # Hack for disabling the titlebar:
     font pango:monospace 1
 
     default_border pixel 1
-    default_floating_border pixel 1
+    default_floating_border pixel 4
 
     client.focused #333333 #6d91de #6d91de #6d91de #6d91de
     client.focused_inactive #333333 #333333 #333333 #333333 #333333
@@ -46,11 +46,16 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
     for_window [app_id="^org.pulseaudio.pavucontrol$"] floating enable
     for_window [app_id="^blueman-manager$"] floating enable
     for_window [app_id="^connman-gtk$"] floating enable
+    for_window [window_role="pop-up"] floating enable
+    for_window [window_role="task dialog"] floating enable
+    for_window [window_role="widget"] floating enable
+    
 
 ### Variables
 
 # Logo key. Use Mod1 for Alt.
     set $mod Mod4
+
     set $alt Mod1
 
     # Home row direction keys, like vim
@@ -73,13 +78,12 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
     # Closely acurate monitor scaling settings:
-  # output DP-1 resolution 1920x1080@144hz adaptive_sync on position 2400,270 RIP MONITOR ;-;
+    # output DP-1 resolution 1920x1080@144hz adaptive_sync on position 2400,270 RIP MONITOR ;-;
+    output DP-1 resolution 3840x2160 adaptive_sync on
     output DP-2 resolution 3840x2160 adaptive_sync on
 
-    # This sucks so much
-
     # TV configuration
-   # output HDMI-A-1 resolution 3840x2160 position 0,0
+    output HDMI-A-1 resolution 3840x2160 position 0,0
 
 
 ### Idle configuration
@@ -301,8 +305,6 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #
 # Programs to run on startup:
 #
-
-    # Small hack for initializing eXtreme Download Manager on another workspace
 
     exec autotiling
     exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]*//g" > /tmp/wobpipe & tail -f /tmp/wobpipe | wob)

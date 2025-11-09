@@ -11,16 +11,18 @@ return {
                 pyright = {},
                 ts_ls = {},
                 rust_analyzer = {},
-                clangd = {}
+                clangd = {},
             }
         },
         config = function(_, opts)
-            local lspconfig = require("lspconfig")
+            local lsp = vim.lsp
+            local blink = require('blink.cmp')
             for server, config in pairs(opts.servers) do
                 -- passing config.capabilities to blink.cmp merges with the capabilities in your
                 -- `opts[server].capabilities, if you've defined it
-                config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-                lspconfig[server].setup(config)
+                config.capabilities = blink.get_lsp_capabilities(config.capabilities)
+                lsp.config(server, config)
+                lsp.enable(server)
             end
         end
     }
