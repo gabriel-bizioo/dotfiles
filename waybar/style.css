@@ -1,38 +1,40 @@
 @import "colors.css";
 
-* {
-  border: 0px;
-  border-radius: 0;
-  font-family: FiraCode Nerd Font;
-  font-weight: bold;
-  font-size: 18px;
-  min-height: 0px;
-}
-
+/* Set global scale baseline here (GTK doesn't support :root) */
 window#waybar {
+  font-size: 16px; /* base UI scale — sway output scale will multiply this */
   background: @base00;
 }
 
+* {
+  border: 0;
+  border-radius: 0;
+  font-family: "FiraCode Nerd Font";
+  font-weight: bold;
+  font-size: 1rem; /* scales relative to the above base size */
+  min-height: 0;
+}
+
 tooltip {
-   background-color: @base00;
-   padding: 10px;
-   border: 5px;
+  background-color: @base00;
+  padding: 0.55rem;
+  border: 0.28rem;
 }
 
 tooltip label {
-    color: @base04;
+  color: @base04;
 }
 
 /* modules left */
 #workspaces {
-   background: @base00;
-   padding-right: 15px;
+  background: @base00;
+  padding-right: 0.83rem;
 }
 
 #workspaces button {
   color: @base01;
-  padding-right: 65px;
-  padding-left: 65px;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 #workspaces button.focused {
@@ -46,35 +48,32 @@ tooltip label {
 }
 
 #tray, #mode {
-   padding-right: 15px;
-   transition: smooth;
+  padding-right: 1rem;
 }
 
 /* modules center */
 #clock {
   color: @base04;
-  padding: 0px 5px;
-  margin: 5px 0px 5px 5px;
+  padding: 0 0.28rem;
+  margin: 0.28rem 0 0.28rem 0.28rem;
 }
 
 /* modules right */
 #cpu, #memory, #temperature, #network, #pulseaudio, #gamemode {
-   color: @base04;
-   padding: 0px 0px 0px 15px;
+  color: @base04;
+  padding-left: 1rem;
 }
 
 #network, #gamemode {
-    padding-right: 5px;
+  padding-right: .4rem;
 }
 
 #temperature.critical {
-    color: @base0F;
+  color: @base0F;
 }
 
-/* last module on the right */
 #temperature {
-   color: @base04;
-   padding-left: 15px;
-   padding-right: 10px;
+  color: @base04;
+  padding-left: 0.83rem;
+  padding-right: 0.83rem;
 }
-

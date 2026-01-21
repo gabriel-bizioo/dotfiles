@@ -12,6 +12,7 @@ return {
                 ts_ls = {},
                 rust_analyzer = {},
                 clangd = {},
+                copilot = {},
             }
         },
         config = function(_, opts)

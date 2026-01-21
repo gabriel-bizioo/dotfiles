@@ -5,7 +5,7 @@
 
     "modules-left": ["sway/workspaces", "tray", "sway/mode"],
     "modules-center": ["clock"],
-    "modules-right": ["gamemode", "network", "pulseaudio", "cpu", "memory", "temperature#cpu", "battery"],
+    "modules-right": ["gamemode", "pulseaudio", "network", "cpu", "memory", "temperature#cpu", "battery"],
 
     "sway/workspaces": {
         "format": "{icon}",
@@ -23,7 +23,7 @@
         }
     },
     "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>",
+        "format": "<span style=\"italic\">{}</span>"
     },
     "tray": {
         "spacing": 10
@@ -34,8 +34,6 @@
         "format": "{:%I:%M %p   %d/%m}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
     },
-
-
    "gamemode": {
        "use-icon": false,
        "format": "{glyph}",
@@ -51,9 +49,6 @@
             "headphone": "",
             "hands-free": "󰋎 ",
             "headset": "󰋎 ",
-            "phone": "",
-            "portable": "",
-            "car": "",
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"

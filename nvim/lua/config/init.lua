@@ -1,7 +1,7 @@
 -- If loadall is set to true then all keymaps will be initiliazed.
 -- Otherwise, load only the files listed manually
 -- Variable to edit
-local loadall = true
+local loadall = false
 local path = (debug.getinfo(1, "S").source:sub(2):match("(.*/)") or "./") .. "keymaps"
 local required = {}
 
@@ -11,7 +11,6 @@ if loadall then
     end
 else
     required = {
-        "strudel",
         "neotree",
         "telescope"
     }

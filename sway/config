@@ -1,5 +1,10 @@
-exec artix-pipewire-launcher &
+exec artix-pipewire-launcher
+
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Necessary in order for screen-sharing to work
+exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY
+
 #
 # Appearance
 #
@@ -25,13 +30,13 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
     set $base0F #f7768e
 # End flavours
 
-    #exec swaybg -o '*' -i $HOME/.config/sway/background.png
-    exec mpvpaper '*' -o "--loop-file" $HOME/Videos/wallpapers/coding-deck-moewalls-com.mp4
+    # exec swaybg -o '*' -i $HOME/.config/sway/background.png
+    # exec mpvpaper '*' -o "--loop-file" $HOME/Videos/wallpapers/doge-samurai-chilling-moewalls-com.mp4
+    exec linux-wallpaperengine --screen-root DP-1 --screen-root DP-2 --disable-mouse --disable-parallax --silent --fps 30 1970356931
     # Hack for disabling the titlebar:
-    font pango:monospace 1
 
     default_border pixel 1
-    default_floating_border pixel 4
+    default_floating_border pixel 3
 
     client.focused #333333 #6d91de #6d91de #6d91de #6d91de
     client.focused_inactive #333333 #333333 #333333 #333333 #333333
@@ -46,10 +51,13 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
     for_window [app_id="^org.pulseaudio.pavucontrol$"] floating enable
     for_window [app_id="^blueman-manager$"] floating enable
     for_window [app_id="^connman-gtk$"] floating enable
-    for_window [window_role="pop-up"] floating enable
+    for_window [window_role="pop-up"] floating enable 
+    for_window [window_role="pop-up"] floating enable font pango:monospace 1
     for_window [window_role="task dialog"] floating enable
     for_window [window_role="widget"] floating enable
-    
+    for_window [class="Cage"] move to layer background
+
+
 
 ### Variables
 
@@ -78,12 +86,14 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
     # Closely acurate monitor scaling settings:
-    # output DP-1 resolution 1920x1080@144hz adaptive_sync on position 2400,270 RIP MONITOR ;-;
-    output DP-1 resolution 3840x2160 adaptive_sync on
-    output DP-2 resolution 3840x2160 adaptive_sync on
+    output 'Technical Concepts Ltd 25G64 00001' resolution 1920x1080@300Hz adaptive_sync on render_bit_depth 10
+    output 'Samsung Electric Company LU28R55 HX5RB00435' resolution 3840x2160 scale 2 adaptive_sync on
 
+    # Assign workspace to specific monitor for better access
+    workspace 1 output 'Technical Concepts Ltd 25G64 00001'
+    workspace 2 output 'Samsung Electric Company LU28R55 HX5RB00435'
     # TV configuration
-    output HDMI-A-1 resolution 3840x2160 position 0,0
+    # output HDMI-A-1 resolution 3840x2160@60Hz position 0,0
 
 
 ### Idle configuration
@@ -243,8 +253,8 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #
 # Volume:
 #
-    bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+ & wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]*//g" > /tmp/wobpipe
-    bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- & wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]*//g" > /tmp/wobpipe
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% & wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]*//g" > /tmp/wobpipe
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% & wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]*//g" > /tmp/wobpipe
     bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 #
@@ -299,12 +309,19 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # Status Bar:
 #
     # Read 'man 5 sway-bar' for more information about this section.
-    bar {
-        swaybar_command waybar
-    }
+    bar swaybar_command waybar
 #
 # Programs to run on startup:
 #
 
-    exec autotiling
+    # Assign startup workspaces before running
+
+    for_window [class="xdman-Main"] move scratchpad
+    exec xdman
+
+    assign [app_id="org.qbittorrent.qBittorrent"] workspace number 10
+    # Maybe don't execute qBittorrent on startup
+    exec qbittorrent
+
+    exec autotiling-rs
     exec (wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]*//g" > /tmp/wobpipe & tail -f /tmp/wobpipe | wob)
